@@ -30,7 +30,18 @@ app.use(cors());
 
 // use router
 app.use(router);
+import dotenv from "dotenv";
+dotenv.config();
 
+import mysql from "mysql2";
+
+// Now you can use process.env to access the variables
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 // // Handle production
 // if (process.env.NODE_ENV === 'production'){
 //   // Static folder
