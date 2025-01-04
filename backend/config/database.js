@@ -1,16 +1,16 @@
 import mysql from "mysql2";
+import dotenv from "dotenv";
 
-// create the connection to database
+dotenv.config(); // Load the .env file
 
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "db_restaurant"
+  host: "localhost",
+  user: "root",
+  password: process.env.DB_PASSWORD, // Use the environment variable
+  database: "db_restaurant",
 });
 
-
-db.connect(error => {
+db.connect((error) => {
   if (error) throw error;
   console.log("Successfully connected to the database.");
 });
